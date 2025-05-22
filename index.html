@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Card</title>
+</head>
+<body>
+  <template id="product-card-template">
+  <style>
+:host {
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --primary-color: #7c4dff;
+    --button-color: #ffb300;
+    --text-color: #333;
+    --rating-color: #ff9800;
+    max-width: 320px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.card {
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  border: 3px solid var(--primary-color);
+  transition: transform 0.4s ease-in-out;
+
+}
+
+.card:hover {
+  transform: translateY(2px);
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.3em;
+  color: var(--primary-color);
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 1.6em;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.rating {
+  margin: 10px 0;
+  color: var(--rating-color);
+  font-size: 1.1em;
+}
+
+.sizes, .colors, .quantity {
+  margin: 12px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sizes button, .quantity button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sizes button:hover,
+.quantity button:hover {
+  background: #e0e0e0;
+}
+
+.sizes button.selected {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.colors div {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: border 0.3s;
+}
+
+.colors div.selected {
+  border: 2px solid #000;
+}
+
+.quantity-value {
+  line-height: 32px;
+  min-width: 28px;
+  font-weight: bold;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 8px;
+}
+
+.button {
+  background: var(--button-color);
+  padding: 12px 24px;
+  margin-top: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #000;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #ffa000;
+}
+
+  </style>
+  <div class="card">
+    <img class="image" id="product-image" alt="Product image" src="img/image.png">
+    <div class="title" id="product-title"></div>
+    <div class="price" id="product-price"></div>
+    <div class="rating" id="product-rating">⭐⭐⭐⭐☆</div>
+
+    <div class="sizes">
+      <button class="selected">S</button>
+      <button class="selected">M</button>
+      <button class="selected">L</button>
+      <button class="selected">XL</button>
+    </div>
+
+    <div class="colors">
+      <div class="selected"  style="background: rgb(239, 76, 76);" data-color="red"></div>
+      <div class="selected"  style="background: rgb(114, 227, 114);" data-color="green"></div>
+      <div class="selected"  style="background: rgb(116, 116, 231);" data-color="blue"></div>
+      <div class="selected"  style="background: rgb(248, 4, 215);" data-color="black"></div>
+    </div>
+
+    <div class="quantity">
+      <button id="decrease">-</button>
+      <div class="quantity-value" id="qty">1</div>
+      <button id="increase">+</button>
+    </div>
+
+    <button class="button" id="add-to-cart-btn">Añadir al carrito</button>
+    <p id="message"></p>
+
+</div>
+</template>
+
+  <product-card
+    title="Camiseta de niño"
+    price="$10"
+    image="img/image.png"
+    rating="4"
+    style="--primary-color: #7f41d7; --button-color: #ffca28;">
+  </product-card>
+
+  <script type="module" src="product-card.js"></script>
+</body>
+</html>
